@@ -1,0 +1,6 @@
+{
+    "js": ["widget.js"],
+    "callback": ["loadHeroImage"],
+    "css": ["stylesheet.css"],
+    "templates": ["template.html"]
+}
