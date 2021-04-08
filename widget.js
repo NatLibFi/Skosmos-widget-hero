@@ -4,7 +4,7 @@ var HERO = HERO || {};
 HERO = {
     widget: {
         render: function (id) {
-            var imgUrl = 'http://extranet.narc.fi/heraldica/k/128/' + id + '.png';
+            var imgUrl = 'http://heraldica.narc.fi/img/hero/thumb/' + id + '.png';
             $('.concept-main').prepend(Handlebars.compile($('#hero-template').html())({'imgurl': imgUrl}));
             $('.property-label-pref').css({'height': '105px'});
         }
