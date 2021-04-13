@@ -3,8 +3,8 @@ var HERO = HERO || {};
 
 HERO = {
 
-    linkTarget: "http://heraldica.narc.fi/termi.html",
-    imageLocation: "http://heraldica.narc.fi/img/hero/thumb/",
+    linkTarget: "//heraldica.narc.fi/termi.html",
+    imageLocation: "//heraldica.narc.fi/img/hero/thumb/",
     widget: {
         getTranslation (key) {
             var getLang = lang;
