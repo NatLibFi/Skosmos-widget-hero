@@ -24,7 +24,11 @@ HERO = {
         render: function (id) {
             var imgUrl = HERO.imageLocation + id + '.png';
             $('.concept-main').prepend(Handlebars.compile($('#hero-template').html())({'imgurl': imgUrl}));
-            $('.property-label-pref').css({'height': '105px'});
+            // here we find the element with the property label, then locate the separator and set an extra buffer so
+            // the images are displayed nicely to the right; changing the height of .property-label-pref, or its
+            // immediate .next() sibling breaks flexbox css calculated height, causing elements to be misaligned
+            // see #1
+            $('.property-label-pref').next().next().css({'margin-top': '70px'});
         },
         createLink: function (id) {
             var $linkElement = $('<p class="hero-link"><a href="" target="_blank"><span></span></a></p>');
