@@ -1,11 +1,19 @@
-.hero-img {
-  display: block;
-  position: absolute;
-  right: 15px;
+#hero-img-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
 }
+
+#hero-img {
+  position: absolute;
+  top: -20px;
+  right: 0;
+}
+
 .concept-info p.hero-link {
   margin-top: 10px;
 }
+
 .hero-link a {
   cursor: pointer;
 }
