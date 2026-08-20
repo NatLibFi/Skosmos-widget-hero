@@ -28,7 +28,7 @@ const HERO = {
       en: 'Corresponding page in Europeana Heraldica'
     }[getLang]
   },
-  render: function (object) {
+  appendMountPoint: function () {
     const mountPoint = document.getElementById('hero-plugin')
     if (mountPoint) {
       if (this.vueApp) {
@@ -39,6 +39,8 @@ const HERO = {
     const newMountPoint = document.createElement('div')
     newMountPoint.id = 'hero-plugin'
     document.getElementById('concept-heading').prepend(newMountPoint)
+  },
+  render: function () {
     this.vueApp = this.createVueApp()
     this.vueApp.mount('#hero-plugin')
     const conceptHeading = document.getElementById('concept-heading')
@@ -71,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (data.pageType !== 'concept' || data.prefLabels === undefined) {
       return
     }
+    HERO.appendMountPoint()
     // reading the id from the uri
     const id = data.uri.substr(data.uri.lastIndexOf('/p') + 2)
     HERO.imgUrl = 'https://heraldica.narc.fi/img/hero/thumb/' + id + '.png'
