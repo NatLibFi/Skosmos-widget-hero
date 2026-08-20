@@ -51,32 +51,29 @@ const HERO = {
     }
   },
   createLink: function (id) {
-    const linkElement = document.createElement('p')
-    linkElement.className = 'hero-link'
     const anchorElement = document.createElement('a')
     const linkTarget = `https://heraldica.narc.fi/termi.html?id=${id}&lang=${window.SKOSMOS.lang}&t=${window.SKOSMOS.content_lang}`
     anchorElement.setAttribute('href', linkTarget)
     anchorElement.setAttribute('target', '_blank')
     anchorElement.setAttribute('rel', 'noopener noreferrer')
-    const spanElement = document.createElement('span')
-    spanElement.textContent = HERO.getTranslation('linkText')
-    anchorElement.appendChild(spanElement)
-    linkElement.appendChild(anchorElement)
-    document.querySelector('.main-content-section').appendChild(linkElement)
+    anchorElement.id = 'hero-link'
+    anchorElement.classList.add('row')
+    anchorElement.classList.add('property')
+    anchorElement.classList.add('prop-uri')
+    anchorElement.textContent = HERO.getTranslation('linkText')
+    document.querySelector('.main-content-section').appendChild(anchorElement)
   }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   window.loadHeroImage = function (data) {
     // Only activating the widget when on a concept page and there is a prefLabel.
-    console.log(data)
     if (data.pageType !== 'concept' || data.prefLabels === undefined) {
       return
     }
     // reading the id from the uri
     const id = data.uri.substr(data.uri.lastIndexOf('/p') + 2)
     HERO.imgUrl = 'https://heraldica.narc.fi/img/hero/thumb/' + id + '.png'
-    console.log(HERO.imgUrl)
     HERO.render(id)
     HERO.createLink(id)
   }
