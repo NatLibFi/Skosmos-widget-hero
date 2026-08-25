@@ -11,7 +11,7 @@ const HERO = {
       },
       template: `
                 <div id="hero-img-container">
-                  <img alt="HERO" id="hero-img" :src="imgurl">
+                  <img alt="" id="hero-img" :src="imgurl" v-if="imgurl">
                 </div>
                 `
     })
@@ -53,17 +53,16 @@ const HERO = {
     }
   },
   createLink: function (id) {
+    const divElement = document.createElement('div')
+    divElement.classList.add('row')
     const anchorElement = document.createElement('a')
     const linkTarget = `https://heraldica.narc.fi/termi.html?id=${id}&lang=${window.SKOSMOS.lang}&t=${window.SKOSMOS.content_lang}`
     anchorElement.setAttribute('href', linkTarget)
     anchorElement.setAttribute('target', '_blank')
-    anchorElement.setAttribute('rel', 'noopener noreferrer')
     anchorElement.id = 'hero-link'
-    anchorElement.classList.add('row')
-    anchorElement.classList.add('property')
-    anchorElement.classList.add('prop-uri')
     anchorElement.textContent = HERO.getTranslation('linkText')
-    document.querySelector('.main-content-section').appendChild(anchorElement)
+    document.querySelector('.main-content-section').appendChild(divElement)
+    divElement.appendChild(anchorElement)
   }
 }
 
