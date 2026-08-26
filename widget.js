@@ -9,11 +9,7 @@ const HERO = {
           imgurl: HERO.imgUrl
         }
       },
-      template: `
-                <div id="hero-img-container">
-                  <img alt="" id="hero-img" :src="imgurl" v-if="imgurl">
-                </div>
-                `
+      template: `<img alt="" id="hero-img" :src="imgurl" v-if="imgurl">`
     })
   },
   imgUrl: null,
@@ -38,13 +34,14 @@ const HERO = {
     }
     const newMountPoint = document.createElement('div')
     newMountPoint.id = 'hero-plugin'
-    document.getElementById('concept-heading').prepend(newMountPoint)
-  },
+    newMountPoint.classList.add('col-lg-2', 'px-0', 'text-end')
+    document.getElementById('concept-label').classList.remove('col-lg-8')
+    document.getElementById('concept-label').classList.add('col-lg-6')
+    document.getElementById('concept-heading').append(newMountPoint)
+    },
   render: function () {
     this.vueApp = this.createVueApp()
     this.vueApp.mount('#hero-plugin')
-    const conceptHeading = document.getElementById('concept-heading')
-    conceptHeading.style.height = '105px'
   },
   remove: function () {
     if (this.vueApp) {
